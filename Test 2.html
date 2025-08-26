@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1: #fdf6f0; 
+      --bg2: #fde2e4; 
+      --bg3: #e0f7fa;
+      --card: rgba(255,255,255,0.6);
+      --primary: #e07a5f; 
+      --secondary: #81b29a; 
+      --accent: #f2cc8f;
+      --radius: 20px;
+      --shadow: 0 8px 24px rgba(0,0,0,.15);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Playfair Display", serif;
+      background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+      color:#333; overflow-x:hidden;
+    }
+    h1{
+      font-family:"Great Vibes", cursive;
+      font-size: clamp(52px, 9vw, 110px);
+      color:#c44569;
+      text-shadow:0 3px 12px rgba(196,69,105,0.3);
+    }
+    h2{font-size:clamp(28px,4vw,42px);color:#444;margin-bottom:18px}
+    .subtitle{color:#555;font-size:clamp(18px,2vw,22px)}
+    .badge{
+      display:inline-block;background:rgba(255,255,255,0.5);
+      padding:6px 12px;border-radius:999px;font-size:.9rem;
+      box-shadow:var(--shadow);
+    }
+    .btn{
+      background:linear-gradient(135deg,var(--primary),#f4a261);
+      border:none; border-radius:var(--radius);
+      padding:12px 18px; font-weight:600; cursor:pointer;
+      color:white; box-shadow:var(--shadow);
+      transition:transform .2s;
+    }
+    .btn:hover{transform:translateY(-3px)}
+    .btn.ghost{background:transparent;border:1px solid rgba(0,0,0,.15);color:#333}
+    .card{
+      background:var(--card); border-radius:var(--radius);
+      box-shadow:var(--shadow); padding:20px;
+      backdrop-filter:blur(12px);
+    }
+
+    header.hero{min-height:100vh;display:grid;place-items:center;text-align:center;position:relative;}
+    section{padding:64px 0}
+    .gallery{display:grid;gap:18px;grid-template-columns:1fr}
+    @media(min-width:760px){.gallery{grid-template-columns:1.6fr 1fr}}
+
+    /* Carousel */
+    .carousel{position:relative;overflow:hidden;border-radius:var(--radius);}
+    .carousel-track{display:flex;transition:transform .5s ease}
+    ..carousel-track img {
+  opacity: 0;
+  position: absolute; /* để các ảnh chồng lên nhau */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.6s ease;
+}
+
+.carousel-track img.active {
+  opacity: 1;
+  z-index: 1;
+}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(255,255,255,.6);border:none;color:#333;
+      width:44px;height:44px;border-radius:50%;cursor:pointer}
+    .carousel-btn.left{left:10px}
+    .carousel-btn.right{right:10px}
+    .dots{display:flex;gap:8px;justify-content:center;margin-top:12px}
+    .dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.2)}
+    .dot.active{background:#333}
+
+    /* Timeline */
+    .timeline{display:grid;gap:16px}
+    .timeline-item{padding:16px 18px;border-radius:var(--radius);
+      background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.1)}
+
+    /* Letter modal */
+    .modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.4);z-index:50}
+    .modal.open{display:grid}
+    .modal-card{width:min(720px,92vw);background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow)}
+
+    .letter{padding:22px;line-height:1.6;color:#333}
+
+    /* Surprise */
+    .surprise{display:grid;gap:18px;place-items:center;text-align:center}
+    .heart-btn{font-size:28px;width:72px;height:72px;border-radius:999px;display:grid;place-items:center;
+      border:none;background: radial-gradient(circle at 30% 30%, #f4a261, #e07a5f);
+      box-shadow:0 10px 30px rgba(224,122,95,.35);cursor:pointer;transition:transform .08s ease}
+    .heart-btn:active{transform:scale(.96)}
+    .gift{display:none;padding:20px;border-radius:var(--radius);
+      background:rgba(255,255,255,0.7);border:1px solid rgba(0,0,0,.1)}
+    .gift.show{display:block}
+
+    footer{padding:36px 0 60px;text-align:center;color:#555}
+
+    /* Confetti */
+    .confetti{position:absolute;width:10px;height:14px;opacity:.9;animation:fall linear forwards;}
+    @keyframes fall{0%{transform:translateY(-10vh) rotate(0);}100%{transform:translateY(110vh) rotate(360deg);}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="badge">27 • 08 • 1978</span>
+      <h1>Happy Birthday, Gin 🎂</h1>
+      <p class="subtitle">Trong giây phút này, anh nghĩ về em với tất cả sự yêu thương và anh mong rằng sự hạnh phúc sẽ đồng hành cùng công chúa của anh từ hôm nay và mãi mãi về sau. Chúc em sinh nhật thật vui vẻ. 💞</p>
+      <div style="margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn" id="scroll-gallery">Xem album ảnh 📸</button>
+        <button class="btn ghost" id="open-letter">Đọc thư 💌</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="gallery" class="container">
+      <h2>Những khoảnh khắc của công chúa 💞 </h2>
+      <div class="gallery">
+        <div class="card">
+          <div class="carousel">
+            <div class="carousel-track" id="track">
+              <img src="assets/1.jpg" alt="Kỷ niệm 1" style="width:100%;margin-top:8px;border-radius:12px">
+  </div>/>
+              <img src="assets/2.jpg" alt="Kỷ niệm 2" style="width:100%;margin-top:8px;border-radius:12px">
+  </div>/>
+              <img src="assets/3.jpg" alt="Kỷ niệm 3" style="width:100%;margin-top:8px;border-radius:12px">
+  </div>/>
+            </div>
+            <button class="carousel-btn left" id="prev">⟨</button>
+            <button class="carousel-btn right" id="next">⟩</button>
+          </div>
+          <div class="dots" id="dots"></div>
+        </div>
+
+        <div class="card">
+          <h3>Timeline nho nhỏ</h3>
+          <div class="timeline">
+  <div class="timeline-item">
+    <time>2022-05-27</time><br>
+    Đà Nẵng - Lần gặp nhau đầu tiên ✨<br>
+    <img src="assets/timeline1.jpg" alt="Đà Nẵng" style="width:100%;margin-top:8px;border-radius:12px">
+  </div>
+  <div class="timeline-item">
+    <time>2022-08-18</time><br>
+    Hà Nội - Đón sinh nhật sớm em 🎉<br>
+    <img src="assets/timeline2.jpg" alt="Hà Nội" style="width:100%;margin-top:8px;border-radius:12px">
+  </div>
+  <div class="timeline-item">
+    <time>2022-10-07</time><br>
+    Sài Gòn - Đón sinh nhật với em 🎂<br>
+    <img src="assets/timeline3.jpg" alt="Sài Gòn" style="width:100%;margin-top:8px;border-radius:12px">
+  </div>
+  <div class="timeline-item">
+    <time>2023-03-11</time><br>
+    Vũng Tàu - Chuyến đi chơi với em đầu tiên 🏖️<br>
+    <img src="assets/timeline4.jpg" alt="Vũng Tàu" style="width:100%;margin-top:8px;border-radius:12px">
+  </div>
+  <div class="timeline-item">
+    Cùng nhau tạo thêm nhiều kỷ niệm nữa em nhé 💖
+  </div>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Bấm trái tim để mở quà bất ngờ</h2>
+      <div class="surprise card">
+        <button class="heart-btn" id="heart">💗</button>
+        <div class="badge">Đã bấm: <span id="taps">0</span> / 10</div>
+        <div id="gift" class="gift">
+          <h3>💍 Chúc mừng!</h3>
+  <p>Chúc mừng em đã trúng được một khế ước tình yêu với anh. Hạn sử dụng là trọn đời. Kèm thêm một chiếc nhẫn đính hôn nữa nhé. moazzzzzz</p>
+  <img src="assets/ring.jpg" alt="Nhẫn đính hôn" style="width:100%;margin-top:12px;border-radius:12px">
+        </div>
+      </div>
+    </section>
+
+    <div id="modal" class="modal">
+      <div class="modal-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid rgba(0,0,0,.1)">
+          <strong>Thư gửi Em 💌</strong>
+          <button id="close-modal" class="btn ghost" style="padding:6px 12px">Đóng</button>
+        </div>
+        <div class="letter">
+          <p>Gin yêu dấu của anh,</p>
+          <p>Anh vẫn nhớ như mới ngày hôm qua, lần đầu tiên hai ta gặp nhau ở Đà Nẵng. Ngay khoảnh khắc đó, anh đã biết trái tim của mình thuộc về ai rồi. Chúng ta đã đi qua rất nhiều thử thách, niềm vui, nỗi buồn... nhưng sau cùng, chúng ta vẫn ở bên nhau và anh vẫn được viết thư cho em.</p>
+          <p>Cảm ơn em vì luôn ở bên, lắng nghe và chia sẻ. Những ngày có em thật sự nhẹ nhàng và hạnh phúc hơn rất nhiều.</p>
+          <p>Anh chúc em một tuổi mới không chỉ thật nhiều niềm vui mà còn tiến gần hơn đến ước mơ mà em vẫn ấp ủ. Anh sẽ luôn ở đây, ở bên cạnh em mỗi lúc em cần, cùng em sẻ chia mọi điều trong cuộc sống.</p>
+          <p>Tương lai sẽ còn nhiều chông gai và thử thách, nhưng anh sẽ không dừng lại ở đây. Anh cảm thấy mình thật may mắn vì luôn có một hậu phương vững chắc, luôn ủng hộ và hỗ trợ anh hết mình – chính là em. Cùng anh viết thêm nhiều điều để sau này kể cho con của chúng ta nhé.</p>
+          <p>Love you as always, my beloved. 💖</p>
+          <p><em>Tăng Hoàng Quốc Vũ</em></p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Made with 💖 for <strong id="footer-name">Em yêu</strong>. • <button class="btn ghost" id="share">Chia sẻ</button>
+  </footer>
+
+  <audio id="bgm" src="assets/song.mp3" preload="none" loop></audio>
+
+  <script>
+    // Scroll
+    document.getElementById('scroll-gallery').addEventListener('click', () => {
+      document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
+      confettiBurst();
+    });
+
+    // Modal
+    const modal = document.getElementById('modal');
+    document.getElementById('open-letter').addEventListener('click', ()=> modal.classList.add('open'));
+    document.getElementById('close-modal').addEventListener('click', ()=> modal.classList.remove('open'));
+    modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.classList.remove('open') });
+
+    // Audio
+    const audio = document.getElementById('bgm');
+
+    // Carousel
+    const track = document.getElementById('track');
+    const slides = Array.from(track.children);
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const dotsWrap = document.getElementById('dots');
+    let index = 0;
+    function renderDots(){
+      dotsWrap.innerHTML='';
+      slides.forEach((_,i)=>{
+        const d=document.createElement('div');
+        d.className='dot'+(i===index?' active':'');
+        d.addEventListener('click',()=>go(i));
+        dotsWrap.appendChild(d);
+      })
+    }
+    function go(i){index=(i+slides.length)%slides.length;track.style.transform=`translateX(-${index*100}%)`;renderDots();}
+    prev.addEventListener('click',()=>go(index-1));
+    next.addEventListener('click',()=>go(index+1));
+    renderDots();
+
+    // Heart surprise
+    const heart=document.getElementById('heart');
+    const taps=document.getElementById('taps');
+    const gift=document.getElementById('gift');
+    let count=0;
+    heart.addEventListener('click',()=>{
+      count++;taps.textContent=count;
+      pulse(heart);
+      confettiBurst();
+      if(count>=42){gift.classList.add('show');}
+    });
+    function pulse(el){el.animate([{transform:'scale(1)'},{transform:'scale(1.15)'},{transform:'scale(1)'}],{duration:220});}
+
+    // Confetti
+    function confettiBurst(){
+      for(let i=0;i<30;i++){
+        const c=document.createElement('div');
+        c.className='confetti';
+        c.style.left=Math.random()*100+'vw';
+        c.style.background=['#f4a261','#e07a5f','#81b29a','#f2cc8f'][Math.floor(Math.random()*4)];
+        c.style.animationDuration=(2+Math.random()*3)+'s';
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(),4000);
+      }
+    }
+
+    // Share
+    document.getElementById('share').addEventListener('click', async ()=>{
+      if(navigator.share){await navigator.share({title:'Happy Birthday',text:'Một món quà nhỏ cho em 💖',url:location.href});}
+      else{await navigator.clipboard.writeText(location.href);alert('Đã copy link!');}
+    });
+  </script>
+</body>
+</html>
